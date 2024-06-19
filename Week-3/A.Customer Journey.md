@@ -27,6 +27,8 @@ FROM
 GROUP BY 1;
 ```
 
+***
+
 #### Selecting random customer_ids for the onboarding details.
 
 ### Customer_id = 14
@@ -47,4 +49,23 @@ WHERE
 
 * This Customer Starts the trail from 22-09-2020
 * After free trail the customer subscribed to basic monthly plan.
+
+### Customer_id = 106
+
+```sql
+SELECT 
+    s.customer_id, p.plan_name, p.price, s.start_date
+FROM
+    subscriptions s
+        JOIN
+    plans p ON s.plan_id = p.plan_id
+WHERE
+    s.customer_id = 106;
+```
+
+#### Result
+![image](https://github.com/JenishBabu/8-Week-SQL-Challenge/assets/110540665/d3ef6929-d80c-4198-9cff-bca6251c7bc3)
+
+* This Customer starts the free trail from 2 August 2020.
+* Then Subscribed to pro annual plan from 7th of August.
 
