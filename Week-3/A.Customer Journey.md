@@ -50,6 +50,8 @@ WHERE
 * This Customer Starts the trail from 22-09-2020
 * After free trail the customer subscribed to basic monthly plan.
 
+***
+
 ### Customer_id = 106
 
 ```sql
