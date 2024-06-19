@@ -35,3 +35,24 @@ else cancellation
 end as cancellation
 from runner_orders;   
 ````
+
+## ATTAINING 1NF IN pizza_recipes TABLE
+
+```sql
+CREATE TABLE PizzaRecipies (
+    pizza_id INT,
+    topping INT
+);
+
+
+INSERT INTO PizzaRecipies (pizza_id, topping)
+SELECT pizza_id, TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(toppings, ',', numbers.n), ',', -1)) + 0 AS topping
+FROM pizza_recipes
+JOIN (
+    SELECT 1 n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4
+    UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8
+    UNION ALL SELECT 9 UNION ALL SELECT 10
+    UNION ALL SELECT 11 UNION ALL SELECT 12
+) numbers ON CHAR_LENGTH(toppings) - CHAR_LENGTH(REPLACE(toppings, ',', '')) >= numbers.n - 1
+ORDER BY pizza_id, topping;
+```
