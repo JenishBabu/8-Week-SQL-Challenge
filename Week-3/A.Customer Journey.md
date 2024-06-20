@@ -15,6 +15,9 @@ FROM
     subscriptions;
 ```
 
+#### Result
+![image](https://github.com/JenishBabu/8-Week-SQL-Challenge/assets/110540665/ef346047-aa65-4db8-9cd8-3931ab41a58a)
+
 ***
 
 ### Number of subscriptions each subscriber has
@@ -26,6 +29,8 @@ FROM
     subscriptions
 GROUP BY 1;
 ```
+#### Result
+![image](https://github.com/JenishBabu/8-Week-SQL-Challenge/assets/110540665/273f3177-4b69-42b5-be50-fd8a8d1ada42)
 
 ***
 
