@@ -111,8 +111,33 @@ where plan_id = 0 and next_month_pln = 4;
 
 ***
 
+### 6. What is the number and percentage of customer plans after their initial free trial?
 
+```sql
+SELECT 
+    p.plan_id,
+    p.plan_name,
+    COUNT(s.customer_id) AS No_of_subs,
+    ROUND((COUNT(s.customer_id) / (SELECT COUNT(DISTINCT customer_id)
+                FROM
+                    subscriptions)) * 100,1) AS Subs_percent
+FROM
+    plans p
+        JOIN
+    subscriptions s ON p.plan_id = s.plan_id
+WHERE
+    p.plan_id != 0
+GROUP BY 1 , 2;
+```
 
+#### Result
+![image](https://github.com/JenishBabu/8-Week-SQL-Challenge/assets/110540665/8130b501-db14-40e4-8d98-d293803039de)
+
+***
+
+### 7.What is the customer count and percentage breakdown of all 5 plan_name values at 2020-12-31?
+
+```sql
 
 
 
